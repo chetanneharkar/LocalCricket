@@ -1,0 +1,103 @@
+<div class="container">
+  <h2>Add Category</h2>
+  <div class="panel panel-default">
+    <div class="panel-heading" align="right">
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddCategory">Add Category</button>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#AddSubCategory">Add Sub Category</button>
+        <!-- <button type="button" class="btn btn-primary">Sony</button> -->
+      </div>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Category Id</th>
+            <th>Category Name</th>
+            <th>Category Desc</th>
+            <th>Parent Category Id</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor ="let categoryNameTO of categoryNameList">
+            <td>{{categoryNameTO.idcategory}}</td>
+            <td>{{categoryNameTO.categoryName}}</td>
+            <td>{{categoryNameTO.categoryDesc}}</td>
+            <td>{{categoryNameTO.parentCategoryId}}</td>
+            <td> <button type="button" class="btn btn-info"(click)="EditCategory(categoryNameTO)">Edit</button></td>
+            <td> <button type="button" class="btn btn-danger"(click)="DeleteCategory(categoryNameTO)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="panel-footer">Panel Footer</div>
+  </div>
+</div>
+<div class="container">
+  <!-- Modal -->
+  <div class="modal fade" id="AddCategory" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Category</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="CategoryName">Category Name:</label>
+            <input type="text" class="form-control" id="CategoryName"[(ngModel)]="categoryTo.categoryName">
+          </div>
+          <div class="form-group">
+            <label for="CategoryDescription">Category Description:</label>
+            <textarea class="form-control" id="CategoryDescription"[(ngModel)]="categoryTo.categoryDesc"> </textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal"(click)="AddCategory()">OK</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="modal fade" id="AddSubCategory" role="dialog">
+      <div class="modal-dialog">
+  
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Add Sub Category</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="sel1">Select Category:</label>
+              <select class="form-control" id="sel1" [(ngModel)]="subCategoryTo.parentCategoryId">
+                  <option value="0">Select Category Name</option>
+                <option *ngFor ="let categoryName of categoryNameList"value ="{{categoryName.idcategory}}">{{categoryName.categoryName}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="CategoryName">Category Name:</label>
+              <input type="text" class="form-control" id="CategoryName" [(ngModel)]="subCategoryTo.categoryName">
+            </div>
+            <div class="form-group">
+              <label for="CategoryDescription">Category Description:</label>
+              <textarea class="form-control" id="CategoryDescription" [(ngModel)]="subCategoryTo.categoryDesc"> </textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <!-- {{subCategoryTo | json}} -->
+              <button type="button" class="btn btn-default" data-dismiss="modal"(click)="AddSubCategory()">OK</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+
+</div>

@@ -1,0 +1,81 @@
+<div class="container">
+ 
+  <div class="panel panel-default">
+      <div class="panel-heading" align="center">
+          <h2>Add News</h2>
+      </div>
+    <div class="panel-body form-horizontal">
+      <!-- <form class="form-horizontal"> -->
+
+
+        <div class="form-group">
+          <label class="col-sm-2">SelectCategory:</label>
+          <div class="col-sm-10">
+            <select class="form-control"  [(ngModel)]="abc" (change)="GetSubCategory(abc)">
+              <option value="0">Select Category Name</option>
+              <option *ngFor="let categoryTO of CategoryNameList" value="{{categoryTO.idcategory}}">{{categoryTO.categoryName}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2">SelectSubCategory:</label>
+            <div class="col-sm-10">
+              <select class="form-control">
+                <option value="0">Select Sub Category Name</option>
+                <option *ngFor="let categoryTO of subCategoryNameList" value="{{categoryTO.idcategory}}">{{categoryTO.categoryName}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 marginTop">State:</label>
+            <div class="col-sm-10">
+              <select class="form-control">
+                <option value="0">Select State Name</option>
+                <option></option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 marginTop">City:</label>
+            <div class="col-sm-10">
+              <select class="form-control">
+                <option value="0">Select City Name</option>
+                <option></option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 marginTop">Location:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 marginTop">FromDate:</label>
+            <div class="col-sm-10">
+              <input type="date" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 marginTop">ToDate:</label>
+            <div class="col-sm-10">
+              <input type="date" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 marginTop">News Heading:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+              <label class="col-sm-2">News Body:</label>
+              <div class="col-sm-10">
+                <textarea class="form-control"rows="10"></textarea >
+              </div>
+            </div>
+      <!-- </form> -->
+    </div>
+  </div>
+</div>
